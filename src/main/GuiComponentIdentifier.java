@@ -10,6 +10,10 @@ import java.util.ArrayList;
 
 import static xml.parser.LeafNodeIdentifier.getBoundsOfLeafNodes;
 
+/**
+ * This class contains the main method and controls the drawing of the rectangles on new images.
+ * It also saves the new images into a new directory called "output."
+ */
 public class GuiComponentIdentifier {
 
     public static void main (String[] args) {
@@ -33,7 +37,8 @@ public class GuiComponentIdentifier {
         InputStream is = null;
         OutputStream os = null;
 
-        // TESTING: Print the leaf level components for each xml file
+        // Identify the leaf level components for each XML file and draw rectangles around these
+        // components for each respective PNG file
         ArrayList<RectCoordinates> listOfRects = new ArrayList<>();
         for (int i = 0; i < imageList.length; i++) {
             if (imageList[i].getName().endsWith(".xml")) {
@@ -61,19 +66,27 @@ public class GuiComponentIdentifier {
 
     private static void drawRects(String imageFileName, ArrayList<RectCoordinates> rects) {
         try {
+            // Load the provided image from the "data" directory
             BufferedImage orgImg = ImageIO.read(new File("./data/" + imageFileName));
+
+            // Create a new PNG file for the highlighted components
             File newImg = new File ("./output/" + imageFileName);
 
+            // Prepare a graphics editor, set the stroke to a width of 5, and set the yellow to color
             Graphics2D editor = orgImg.createGraphics();
+            Stroke stroke = new BasicStroke(5);
+            editor.setStroke(stroke);
             editor.setColor(Color.YELLOW);
 
+            // For each rectangle coordinate in the list, draw the corresponding rectangle
             for (int i = 0; i < rects.size() - 1; i++) {
                 editor.drawRect(rects.get(i).getX1(),
                                 rects.get(i).getY1(),
                                 rects.get(i).calculateWidth(),
-                                rects.get(i).calculuateHeight());
+                                rects.get(i).calculateHeight());
             }
 
+            // Save the image
             ImageIO.write(orgImg, "png", newImg);
 
         } catch (Exception e) {

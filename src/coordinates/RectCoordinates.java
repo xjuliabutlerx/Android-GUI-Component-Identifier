@@ -17,18 +17,6 @@ public class RectCoordinates {
 
     public RectCoordinates() {}
 
-    public RectCoordinates(int x1, int y1, int x2, int y2) {
-        this.x1 = x1;
-        this.x2 = x2;
-        this.y1 = y1;
-        this.y2 = y2;
-
-        this.x1flag = true;
-        this.x2flag = true;
-        this.y1flag = true;
-        this.y2flag = true;
-    }
-
     public void setX1(int x1) {
         this.x1 = x1;
         this.x1flag = true;
@@ -81,7 +69,7 @@ public class RectCoordinates {
         return y2flag;
     }
 
-    public int calculuateHeight() {
+    public int calculateHeight() {
         return y2 - y1;
     }
 
