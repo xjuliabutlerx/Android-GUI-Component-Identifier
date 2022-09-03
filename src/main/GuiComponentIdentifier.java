@@ -2,6 +2,8 @@ package main;
 
 import java.io.*;
 
+import static xml.parser.LeafNodeIdentifier.printLeafNodes;
+
 public class GuiComponentIdentifier {
 
     public static void main (String[] args) throws IOException {
@@ -13,39 +15,30 @@ public class GuiComponentIdentifier {
 
         if (newDir.mkdir()) {
             System.out.println("Directory created!");
+            System.out.println();
         } else {
             System.out.println("Error Creating Directory!");
+            System.out.println();
         }
 
-        // Copy the PNG files into the new "output" directory
+        // TESTING: Print the file names of everything in the data directory
+        printFileNames();
+        System.out.println();
+
+        // Find the leaf level components for each xml file
         File dataFolder = new File ("./data");
         File[] imageList = dataFolder.listFiles();
-        InputStream is = null;
-        OutputStream os = null;
 
         for (int i = 0; i < imageList.length; i++) {
-            if (imageList[i].getName().endsWith(".png")) {
-                try {
-                    File newFile = new File ("./output/" + imageList[i].getName());
-
-                    is = new FileInputStream(imageList[i]);
-                    os = new FileOutputStream(newFile);
-
-                    byte[] buffer = new byte[1024];
-                    int length;
-                    while ((length = is.read(buffer)) > 0) {
-                        os.write(buffer, 0, length);
-                    }
-                } finally {
-                    is.close();
-                    os.close();
-                }
+            if (imageList[i].getName().endsWith(".xml")) {
+                System.out.println("FILE: " + imageList[i].getName());
+                printLeafNodes("./data/" + imageList[i].getName());
             }
         }
 
     }
 
-    private void printFileNames() {
+    private static void printFileNames() {
         File folder = new File("./data");
         File[] listOfFiles = folder.listFiles();
 
