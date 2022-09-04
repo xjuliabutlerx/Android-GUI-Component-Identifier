@@ -21,7 +21,7 @@
 <li>Run the main method in GuiComponentIdentifier</li>
 </ol>
 
-<p><em>Note: When I cloned this repository and followed the 3 steps above, my imports from RectCoordinates and LeafNodeIdentifier to GuiComponentIdentifier were still showing as errors, but I ran the main method from GuiComponentIdentifier and still had got successful output depsite those errors and an additional output in the console that said there was an error creating the output directory. I'm not sure why this happened, but the program still worked.</em></p>
+<p><em>Note: When I cloned this repository and followed the 3 steps above, my imports from RectCoordinates and LeafNodeIdentifier to GuiComponentIdentifier were still showing as errors, but I ran the main method from GuiComponentIdentifier and still got successful annotated screenshots depsite those errors and an additional output in the console that said there was an error creating the output directory. I'm not sure why this happened, but the program still worked.</em></p>
 
 <h4>Resources/Citations</h4>
 
