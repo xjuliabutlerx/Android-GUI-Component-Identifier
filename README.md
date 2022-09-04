@@ -17,6 +17,7 @@
 
 <ol>
 <li>Clone the repository</li>
+<li>Set the Java SDK to 8</li>
 <li>Delete the output directory</li>
 <li>Run the main method in GuiComponentIdentifier</li>
 </ol>
